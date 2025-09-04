@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnCrYpTeD | Digital Innovation & Tech Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0a14;
+            --secondary: #161622;
+            --accent: #00d9ff;
+            --accent-gradient: linear-gradient(90deg, #00d9ff, #0077ff);
+            --text: #ffffff;
+            --text-secondary: #b0b0b0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(10, 10, 20, 0.9);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%230077ff" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,224C672,235,768,181,864,165.3C960,149,1056,171,1152,176C1248,181,1344,171,1392,165.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom no-repeat;
+            background-size: cover;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--text-secondary);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--accent-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 217, 255, 0.3);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .service-card p {
+            color: var(--text-secondary);
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            padding: 100px 0;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .portfolio-item {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            background: linear-gradient(135deg, #161622, #0a0a14);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-overlay p {
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+        
+        .about-image {
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details div {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details i {
+            margin-right: 15px;
+            font-size: 20px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--secondary);
+            color: var(--text);
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent-gradient);
+            transform: translateY(-3px);
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: var(--secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text);
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-form button {
+            padding: 15px 30px;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .contact-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 217, 255, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .footer-links li {
+            margin: 0 15px;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            color: var(--text-secondary);
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--secondary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 130px 0 80px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .service-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">EnCrYpTeD</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Innovative Digital Solutions</h1>
+            <p>Transforming businesses with cutting-edge technology, stunning design, and seamless user experiences.</p>
+            <a href="#contact" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We offer a comprehensive range of digital solutions to help your business thrive in the digital age.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <h3>UX/UI Design</h3>
+                    <p>Creating intuitive and visually appealing interfaces that enhance user experience and engagement.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Apps</h3>
+                    <p>Developing high-performance mobile applications for iOS and Android platforms.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Building responsive, scalable, and secure web applications tailored to your needs.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Digital Solutions</h3>
+                    <p>Custom software solutions to streamline operations and drive business growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Work</h2>
+                <p>Explore our portfolio of successful projects and see how we've helped businesses like yours.</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="E-commerce Platform">
+                    <div class="portfolio-overlay">
+                        <h3>E-commerce Platform</h3>
+                        <p>Complete online shopping solution with secure payment integration.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Fitness App">
+                    <div class="portfolio-overlay">
+                        <h3>Fitness App</h3>
+                        <p>Mobile application for workout tracking and nutrition planning.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Financial Dashboard">
+                    <div class="portfolio-overlay">
+                        <h3>Financial Dashboard</h3>
+                        <p>Interactive dashboard for financial data visualization and analysis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About EnCrYpTeD</h2>
+                    <p>We are a team of passionate developers, designers, and digital strategists dedicated to delivering exceptional technology solutions.</p>
+                    <p>Founded in 2015, we've helped over 200 businesses transform their digital presence and achieve their goals.</p>
+                    <p>Our mission is to empower businesses with innovative technology that drives growth, efficiency, and customer satisfaction.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Our Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p>Have a project in mind or need expert advice? Reach out to us and let's create something amazing together.</p>
+                    <div class="contact-details">
+                        <div>
+                            <i class="fas fa-envelope"></i>
+                            <span>encrypt33d@gmail.com</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-phone"></i>
+                            <span>08145959838</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Lagos, Nigeria</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://wa.me/2348145959838" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="text" placeholder="Subject">
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">EnCrYpTeD</div>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="copyright">
+                <p>&copy; 2023 EnCrYpTeD. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
